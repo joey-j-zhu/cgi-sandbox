@@ -24,7 +24,7 @@ frameSize = (D, D)
 # OpenCV avi video setup
 width = D * UPSCALE
 height = D * UPSCALE
-FPS = 60
+FPS = 12
 seconds = 60
 VSCALE = 256
 

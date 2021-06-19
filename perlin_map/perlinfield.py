@@ -169,7 +169,6 @@ class PerlinField:
         dx = self.image.shape[0] / 2
         dy = self.image.shape[1] / 2
 
-        new_x, new_y = load_coordinates()
 
         # Shift
         # Stretch from [-1, 1] to [

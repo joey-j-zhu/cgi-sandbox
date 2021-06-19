@@ -90,8 +90,9 @@ class PerlinSeries:
 
     def jitter(self):
         for i in range(self.size):
-            offset = np.random.randint(-1, 1, self.fields[i].dxn.shape)
-            self.fields[i].rotate(offset * 2 * np.pi)
+            if (np.random.random() < 1 / (i + 1)):
+                offset = np.random.randint(-1, 2, self.fields[i].dxn.shape)
+                self.fields[i].rotate(offset * 2 * np.pi)
 
 
 # Read a Perlin series and load it

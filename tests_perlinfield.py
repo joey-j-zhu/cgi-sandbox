@@ -32,18 +32,18 @@ def perlinize(name, octaves, learning_rate, epoch_frames):
     blue_series = perlin_test(blue, octaves, learning_rate, epoch_frames, 1, False)
     print("blue channel finished")
 
-    red_series.save("perlinmaps/" + name + "_red.npz")
-    green_series.save("perlinmaps/" + name + "_green.npz")
-    blue_series.save("perlinmaps/" + name + "_blue.npz")
+    red_series.save("data/perlinmaps/" + name + "_red.npz")
+    green_series.save("data/perlinmaps/" + name + "_green.npz")
+    blue_series.save("data/perlinmaps/" + name + "_blue.npz")
 
     return red_series, green_series, blue_series
 
 
 # Load the RGB perlin maps of the input filename
 def load_perlin_map(name):
-    rp = load("perlinmaps/" + name + "_red.npz")
-    gp = load("perlinmaps/" + name + "_green.npz")
-    bp = load("perlinmaps/" + name + "_blue.npz")
+    rp = load("data/perlinmaps/" + name + "_red.npz")
+    gp = load("data/perlinmaps/" + name + "_green.npz")
+    bp = load("data/perlinmaps/" + name + "_blue.npz")
     rp.render()
     gp.render()
     bp.render()
@@ -88,11 +88,14 @@ def cycle(files, transition, idle, rev_offset):
     for red, green, blue in slideshow(files, transition, idle, rev_offset):
         raster = cv_rgb(red, green, blue)
         video.write(raster)
-        print("ding!")
+        print("frame: " + str(i))
+        i += 1
 
 red, green, blue = png_to_arrays("test_images/windowsxp")
+#rs, gs, bs = perlinize("windowsxp", 7, 10, 25)
+#rs2, gs2, bs2 = perlinize("rain", 7, 10, 25)
 
-#cycle(["zebra-1", "zebra-2"], 150, 0, 0)
+cycle(["windowsxp", "rain"], 80, 0, 1)
 video.release()
 print("LETS FUCKING GOOOOOO")
 
