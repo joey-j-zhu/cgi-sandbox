@@ -21,7 +21,7 @@ buffer_frames, rate = 10, 0.1
 wfunc = lambda x: x
 
 # Render settings
-frames, steps_per_frame = 500, 8000
+frames, steps_per_frame = 100, 1000
 t = np.arange(frames)
 
 
